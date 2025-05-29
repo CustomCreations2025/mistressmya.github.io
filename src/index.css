@@ -101,7 +101,7 @@
 
   /* Reduce default spacing for better compactness */
   section {
-    @apply py-12 md:py-16;
+    @apply py-8 md:py-12;
   }
 
   .container {
@@ -152,7 +152,12 @@
     
     /* Reduce mobile spacing further */
     section {
-      @apply py-8 md:py-12;
+      @apply py-6 md:py-8;
+    }
+    
+    /* Ensure buttons stack properly on mobile */
+    .grid-cols-1 {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -163,5 +168,16 @@
   
   .responsive-heading {
     @apply text-2xl sm:text-3xl lg:text-4xl;
+  }
+
+  /* Fix mobile button layout */
+  @media (max-width: 640px) {
+    .grid-cols-1.sm\:grid-cols-2 {
+      grid-template-columns: 1fr;
+    }
+    
+    .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3 {
+      grid-template-columns: 1fr;
+    }
   }
 }

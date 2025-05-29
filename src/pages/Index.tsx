@@ -41,22 +41,25 @@ const Index = () => {
           <p className="text-lg md:text-xl lg:text-2xl mb-6 text-purple-100 animate-fade-in">
             Professional discipline services delivered with discretion, respect, and expertise
           </p>
-          <p className="text-base md:text-lg mb-6 text-purple-200 animate-fade-in">
+          <p className="text-base md:text-lg mb-8 text-purple-200 animate-fade-in">
             Based in Bedfordshire, but available to travel and make arrangements to perform elsewhere
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-            <Button asChild size="lg" className="bg-white text-purple-900 hover:bg-purple-50 w-full sm:w-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto animate-fade-in">
+            <Button asChild size="lg" className="bg-white text-purple-900 hover:bg-purple-50 w-full">
               <Link to="/booking">Book Session</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-purple-900 w-full sm:w-auto">
+            <Button asChild size="lg" className="bg-purple-700 text-white hover:bg-purple-600 w-full">
               <Link to="/services">Explore Services</Link>
+            </Button>
+            <Button asChild size="lg" className="bg-pink-600 text-white hover:bg-pink-700 w-full">
+              <Link to="/about">How To Approach Me</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="order-2 lg:order-1">
@@ -91,9 +94,9 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-12 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose My Services</h2>
             <p className="text-lg md:text-xl text-slate-600">Professional standards meet personal care</p>
           </div>
@@ -112,9 +115,9 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Session Rates</h2>
             <p className="text-lg md:text-xl text-slate-600">Clear, transparent pricing for all services</p>
           </div>
@@ -138,7 +141,7 @@ const Index = () => {
             </Card>
           </div>
           
-          <div className="text-center mt-8">
+          <div className="text-center mt-6">
             <Card className="bg-purple-50 border-purple-200 max-w-2xl mx-auto">
               <CardContent className="p-6">
                 <Shield className="h-8 w-8 text-purple-600 mx-auto mb-3" />
@@ -152,18 +155,18 @@ const Index = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+      <section className="py-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Begin Your Journey?</h2>
           <p className="text-lg md:text-xl mb-6 text-purple-100">
             Take the first step towards a professional and transformative experience. 
             Book your session today and discover what makes my services unique.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
+            <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50 w-full">
               <Link to="/booking">Book Now</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-purple-600">
+            <Button asChild size="lg" className="bg-purple-700 text-white hover:bg-purple-600 w-full">
               <Link to="/contact">Ask Questions</Link>
             </Button>
           </div>

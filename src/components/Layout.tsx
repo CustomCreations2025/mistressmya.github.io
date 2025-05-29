@@ -60,23 +60,26 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
+              <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="z-50 relative"
-                aria-label="Toggle menu"
+                className="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-purple-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
+                aria-expanded="false"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
+                <span className="sr-only">Open main menu</span>
+                {isMenuOpen ? (
+                  <X className="block h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="block h-6 w-6" aria-hidden="true" />
+                )}
+              </button>
             </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-16 bg-white z-40 overflow-y-auto">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-slate-200">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -122,6 +125,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     <Link
                       to={item.href}
                       className="text-slate-300 hover:text-white transition-colors text-sm"
+                      onClick={() => window.scrollTo(0, 0)}
                     >
                       {item.name}
                     </Link>

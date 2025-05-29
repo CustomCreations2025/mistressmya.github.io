@@ -28,13 +28,43 @@ const Gallery = () => {
       src: "/lovable-uploads/7db142e7-2841-4ee3-af3a-e8d9d2153191.png",
       alt: "Professional training environment",
       category: "Training"
+    },
+    {
+      src: "/lovable-uploads/7cf2bf80-4441-4fd5-a7f9-6fd6778505cb.png",
+      alt: "Professional discipline setup",
+      category: "Equipment"
+    },
+    {
+      src: "/lovable-uploads/269c5416-fe11-4f7d-9420-4cea684d2a59.png",
+      alt: "Professional session detail",
+      category: "Detail"
+    },
+    {
+      src: "/lovable-uploads/ab005f06-9494-4b4f-b22c-04ab04896d0f.png",
+      alt: "Professional atmosphere",
+      category: "Atmosphere"
+    },
+    {
+      src: "/lovable-uploads/047169e7-8f12-4bcf-aa34-5d7a34888a36.png",
+      alt: "Professional setting",
+      category: "Setting"
+    },
+    {
+      src: "/lovable-uploads/fc61e8ed-1912-45bc-a3e9-6919990c257a.png",
+      alt: "Professional equipment",
+      category: "Equipment"
+    },
+    {
+      src: "/lovable-uploads/12c879e1-0632-4f41-9f67-fb2c58222163.png",
+      alt: "Professional environment",
+      category: "Environment"
     }
   ];
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 text-white">
+      <section className="py-16 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl font-bold mb-6">Gallery</h1>
           <p className="text-xl text-purple-100">
@@ -44,14 +74,14 @@ const Gallery = () => {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-800 mb-4">Professional Environment</h2>
             <p className="text-xl text-slate-600">Tasteful imagery showcasing the professional setting and atmosphere</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryImages.map((image, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-0">
@@ -88,11 +118,11 @@ const Gallery = () => {
       </section>
 
       {/* Environment Description */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-800 mb-6">The Professional Environment</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold text-slate-800 mb-3">Studio Setting</h3>

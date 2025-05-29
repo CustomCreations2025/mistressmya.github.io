@@ -29,21 +29,6 @@ const Index = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      text: "Mya's professionalism and understanding made me feel completely at ease. Highly recommended.",
-      author: "Client S."
-    },
-    {
-      text: "The attention to detail and respect for boundaries is exceptional. A truly professional service.",
-      author: "Client M."
-    },
-    {
-      text: "Transformative experience with clear communication throughout. Thank you, Mya.",
-      author: "Client R."
-    }
-  ];
-
   return (
     <Layout>
       {/* Hero Section */}
@@ -56,9 +41,12 @@ const Index = () => {
           <p className="text-xl md:text-2xl mb-8 text-purple-100 animate-fade-in">
             Professional discipline services delivered with discretion, respect, and expertise
           </p>
+          <p className="text-lg mb-8 text-purple-200 animate-fade-in">
+            Based in Bedfordshire, but available to travel and make arrangements to perform elsewhere
+          </p>
           <div className="space-x-4 animate-fade-in">
             <Button asChild size="lg" className="bg-white text-purple-900 hover:bg-purple-50">
-              <Link to="/booking">Book Consultation</Link>
+              <Link to="/booking">Book Session</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-purple-900">
               <Link to="/services">Explore Services</Link>
@@ -91,8 +79,11 @@ const Index = () => {
             </div>
             <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-8 h-96 flex items-center justify-center">
               <div className="text-center text-purple-700">
-                <h3 className="text-2xl font-bold mb-4">Professional Portrait</h3>
-                <p className="text-lg">Image placeholder for Mya's professional photo</p>
+                <img 
+                  src="/lovable-uploads/0f879d97-04d8-4625-a6b8-fa002a1f6bd6.png" 
+                  alt="Mya The Disciplinarian" 
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
             </div>
           </div>
@@ -120,27 +111,42 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Pricing Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">Client Testimonials</h2>
-            <p className="text-xl text-slate-600">Hear from those who have experienced my services</p>
+            <h2 className="text-4xl font-bold text-slate-800 mb-4">Session Rates</h2>
+            <p className="text-xl text-slate-600">Clear, transparent pricing for all services</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6">
-                  <div className="flex mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-slate-600 mb-4 italic">"{testimonial.text}"</p>
-                  <p className="text-slate-500 font-medium">— {testimonial.author}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-purple-200">
+              <CardContent className="p-8 text-center">
+                <h3 className="text-2xl font-bold text-purple-700 mb-4">Newbie Sessions</h3>
+                <div className="text-4xl font-bold text-slate-800 mb-2">£300</div>
+                <p className="text-slate-600 mb-4">1.5 hours</p>
+                <p className="text-slate-600">Perfect for first-time clients with extended consultation and gentle introduction</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-purple-200">
+              <CardContent className="p-8 text-center">
+                <h3 className="text-2xl font-bold text-purple-700 mb-4">Regular Clients</h3>
+                <div className="text-4xl font-bold text-slate-800 mb-2">£250</div>
+                <p className="text-slate-600 mb-4">per hour</p>
+                <p className="text-slate-600">For returning clients familiar with the process and their preferences</p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center mt-12">
+            <Card className="bg-purple-50 border-purple-200 max-w-2xl mx-auto">
+              <CardContent className="p-6">
+                <Shield className="h-8 w-8 text-purple-600 mx-auto mb-3" />
+                <p className="text-slate-700 font-medium">
+                  Bank statement name is discreet and does not reflect the service provided.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -151,7 +157,7 @@ const Index = () => {
           <h2 className="text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
           <p className="text-xl mb-8 text-purple-100">
             Take the first step towards a professional and transformative experience. 
-            Book your consultation today and discover what makes my services unique.
+            Book your session today and discover what makes my services unique.
           </p>
           <div className="space-x-4">
             <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50">

@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
 import { Mail, Clock, Shield, MessageCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,8 @@ const Contact = () => {
     inquiryType: "",
     message: ""
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const inquiryTypes = [
     "General Information",
@@ -31,10 +35,33 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    alert("Thank you for your message. I will respond within 24 hours.");
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-message', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast.success("Message sent successfully! You'll receive a confirmation email shortly.");
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        inquiryType: "",
+        message: ""
+      });
+    } catch (error: any) {
+      console.error("Error submitting contact form:", error);
+      toast.error("Failed to send message. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -126,8 +153,9 @@ const Contact = () => {
                       type="submit" 
                       size="lg" 
                       className="w-full bg-gradient-to-r from-purple-600 to-pink-600"
+                      disabled={isSubmitting}
                     >
-                      Send Message
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
                 </CardContent>
@@ -146,13 +174,13 @@ const Contact = () => {
                 <CardContent className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-slate-800">Email</h4>
-                    <p className="text-slate-600">contact@mythedisciplinarian.com</p>
+                    <p className="text-slate-600">welcome2myasworld@gmail.com</p>
                     <p className="text-sm text-slate-500 mt-1">Primary method of communication</p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-800">Location</h4>
-                    <p className="text-slate-600">Private studio in Central London</p>
-                    <p className="text-sm text-slate-500 mt-1">Exact address provided upon booking</p>
+                    <p className="text-slate-600">Based in Bedfordshire</p>
+                    <p className="text-sm text-slate-500 mt-1">Available to travel and make arrangements to perform elsewhere</p>
                   </div>
                 </CardContent>
               </Card>
@@ -256,7 +284,7 @@ const Contact = () => {
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-slate-800 mb-2">What if I'm new to this?</h3>
                 <p className="text-slate-600">
-                  I welcome newcomers and always recommend starting with a consultation session. This allows 
+                  I welcome newcomers and always recommend starting with a newbie session. This allows 
                   us to discuss your interests, boundaries, and any concerns in a comfortable setting.
                 </p>
               </CardContent>
@@ -284,7 +312,7 @@ const Contact = () => {
           </p>
           <div className="space-x-4">
             <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50">
-              <a href="mailto:contact@mythedisciplinarian.com">Send Email</a>
+              <a href="mailto:welcome2myasworld@gmail.com">Send Email</a>
             </Button>
           </div>
         </div>

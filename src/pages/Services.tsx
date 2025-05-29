@@ -9,33 +9,33 @@ import { Clock, Star, Shield } from "lucide-react";
 const Services = () => {
   const services = [
     {
-      title: "Consultation Session",
-      duration: "60 minutes",
-      price: "£150",
-      description: "Initial consultation to discuss your needs, boundaries, and expectations. Perfect for first-time clients.",
-      features: ["Boundary discussion", "Expectation setting", "Safe word establishment", "Aftercare planning"],
-      category: "Consultation"
+      title: "Newbie Session",
+      duration: "1.5 hours",
+      price: "£300",
+      description: "Perfect introduction for first-time clients. Extended session to ensure comfort and proper boundary setting.",
+      features: ["Extended consultation", "Gentle introduction", "Comprehensive aftercare", "Boundary establishment"],
+      category: "New Client"
     },
     {
-      title: "Standard Discipline Session",
-      duration: "90 minutes",
+      title: "Regular Session",
+      duration: "1 hour",
       price: "£250",
-      description: "Comprehensive discipline session tailored to your specific requirements and comfort level.",
+      description: "Standard session for returning clients who are familiar with the process and their preferences.",
       features: ["Personalized approach", "Various techniques", "Professional environment", "Post-session debrief"],
-      category: "Session"
+      category: "Regular Client"
     },
     {
       title: "Extended Session",
       duration: "2 hours",
-      price: "£350",
+      price: "£500",
       description: "Extended session for those seeking a more immersive and comprehensive experience.",
       features: ["Extended experience", "Multiple scenarios", "Advanced techniques", "Comprehensive aftercare"],
-      category: "Session"
+      category: "Extended"
     },
     {
       title: "Lifestyle Coaching",
       duration: "60 minutes",
-      price: "£200",
+      price: "£300",
       description: "Ongoing guidance and coaching for those incorporating discipline into their lifestyle.",
       features: ["Lifestyle integration", "Ongoing support", "Progress tracking", "Personalized guidance"],
       category: "Coaching"
@@ -43,7 +43,7 @@ const Services = () => {
     {
       title: "Couples Session",
       duration: "2 hours",
-      price: "£400",
+      price: "£500",
       description: "Professional guidance for couples exploring discipline together in a safe environment.",
       features: ["Couple dynamics", "Communication training", "Boundary setting", "Joint aftercare"],
       category: "Specialized"
@@ -51,28 +51,10 @@ const Services = () => {
     {
       title: "Virtual Consultation",
       duration: "45 minutes",
-      price: "£100",
+      price: "£150",
       description: "Remote consultation via secure video call for initial discussions or ongoing support.",
       features: ["Secure platform", "Flexible scheduling", "Global availability", "Follow-up support"],
       category: "Virtual"
-    }
-  ];
-
-  const testimonials = [
-    {
-      text: "The consultation session was exactly what I needed to understand my boundaries and feel confident moving forward.",
-      author: "Client A.",
-      service: "Consultation Session"
-    },
-    {
-      text: "Professional, respectful, and transformative. The extended session exceeded all my expectations.",
-      author: "Client B.",
-      service: "Extended Session"
-    },
-    {
-      text: "The couples session helped us communicate better and explore our dynamic safely together.",
-      author: "Client C.",
-      service: "Couples Session"
     }
   ];
 
@@ -84,6 +66,9 @@ const Services = () => {
           <h1 className="text-5xl font-bold mb-6">Professional Services</h1>
           <p className="text-xl text-purple-100 mb-8">
             Tailored discipline experiences designed to meet your unique needs with complete professionalism and discretion.
+          </p>
+          <p className="text-lg text-purple-200">
+            Based in Bedfordshire, but available to travel and make arrangements to perform elsewhere.
           </p>
         </div>
       </section>
@@ -137,8 +122,27 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Service Guidelines */}
+      {/* Payment Information */}
       <section className="py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">Payment Information</h2>
+          </div>
+          
+          <Card className="bg-purple-50 border-purple-200">
+            <CardContent className="p-8 text-center">
+              <Shield className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-slate-800 mb-3">Discreet Billing</h3>
+              <p className="text-slate-600 text-lg">
+                Bank statement name is discreet and does not reflect the service provided.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Service Guidelines */}
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-800 mb-4">Service Guidelines</h2>
@@ -179,35 +183,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Client Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">Client Experiences</h2>
-            <p className="text-xl text-slate-600">What clients say about specific services</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6">
-                  <div className="flex mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-slate-600 mb-4 italic">"{testimonial.text}"</p>
-                  <div>
-                    <p className="text-slate-500 font-medium">— {testimonial.author}</p>
-                    <Badge variant="outline" className="mt-2">{testimonial.service}</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Call to Action */}
       <section className="py-20 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -217,7 +192,7 @@ const Services = () => {
           </p>
           <div className="space-x-4">
             <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50">
-              <Link to="/booking">Book Consultation</Link>
+              <Link to="/booking">Book Session</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-purple-600">
               <Link to="/contact">Ask Questions</Link>

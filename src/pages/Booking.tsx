@@ -9,6 +9,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Clock, Shield, Heart } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -28,13 +30,15 @@ const Booking = () => {
     }
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const services = [
-    "Consultation Session (60 min - £150)",
-    "Standard Discipline Session (90 min - £250)",
-    "Extended Session (2 hours - £350)",
-    "Lifestyle Coaching (60 min - £200)",
-    "Couples Session (2 hours - £400)",
-    "Virtual Consultation (45 min - £100)"
+    "Newbie Session (1.5 hours - £300)",
+    "Regular Session (1 hour - £250)",
+    "Extended Session (2 hours - £500)",
+    "Lifestyle Coaching (60 min - £300)",
+    "Couples Session (2 hours - £500)",
+    "Virtual Consultation (45 min - £150)"
   ];
 
   const experienceLevels = [
@@ -55,11 +59,51 @@ const Booking = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Here you would typically send the data to your backend
-    alert("Thank you for your booking request. I will contact you within 24 hours to confirm your session.");
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-booking-notification', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          preferredDate: formData.preferredDate,
+          preferredTime: formData.preferredTime,
+          experience: formData.experience,
+          message: formData.message
+        }
+      });
+
+      if (error) throw error;
+
+      toast.success("Booking request sent successfully! You'll receive a confirmation email shortly.");
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        preferredDate: "",
+        preferredTime: "",
+        experience: "",
+        message: "",
+        agreements: {
+          age: false,
+          consent: false,
+          discretion: false,
+          safety: false
+        }
+      });
+    } catch (error: any) {
+      console.error("Error submitting booking:", error);
+      toast.error("Failed to send booking request. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const allAgreementsChecked = Object.values(formData.agreements).every(Boolean);
@@ -254,9 +298,9 @@ const Booking = () => {
                       type="submit" 
                       size="lg" 
                       className="w-full bg-gradient-to-r from-purple-600 to-pink-600"
-                      disabled={!allAgreementsChecked}
+                      disabled={!allAgreementsChecked || isSubmitting}
                     >
-                      Submit Booking Request
+                      {isSubmitting ? "Sending..." : "Submit Booking Request"}
                     </Button>
                   </form>
                 </CardContent>

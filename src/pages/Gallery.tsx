@@ -1,58 +1,20 @@
 
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const Gallery = () => {
-  const galleryItems = [
+  const galleryImages = [
     {
-      title: "Professional Studio Setup",
-      category: "Environment",
-      description: "Clean, professional environment designed for comfort and safety"
+      src: "/lovable-uploads/0f879d97-04d8-4625-a6b8-fa002a1f6bd6.png",
+      alt: "Professional session environment",
+      category: "Studio"
     },
     {
-      title: "Session Equipment",
-      category: "Equipment",
-      description: "High-quality, professionally maintained equipment for various sessions"
-    },
-    {
-      title: "Consultation Area",
-      category: "Environment",
-      description: "Comfortable space for initial consultations and discussions"
-    },
-    {
-      title: "Aftercare Space",
-      category: "Environment",
-      description: "Dedicated area for post-session care and reflection"
-    },
-    {
-      title: "Safety Equipment",
-      category: "Safety",
-      description: "Professional safety equipment always within reach"
-    },
-    {
-      title: "Private Entrance",
-      category: "Privacy",
-      description: "Discrete entrance ensuring complete privacy for all clients"
-    },
-    {
-      title: "Preparation Area",
-      category: "Environment",
-      description: "Private space for client preparation and changing"
-    },
-    {
-      title: "Professional Attire",
-      category: "Professional",
-      description: "Various professional outfits suitable for different session types"
-    },
-    {
-      title: "Communication Tools",
-      category: "Safety",
-      description: "Clear communication aids and safety signal systems"
+      src: "/lovable-uploads/73930176-d6f8-4a94-95d4-50092c926332.png",
+      alt: "Professional portrait",
+      category: "Portrait"
     }
   ];
-
-  const categories = ["All", "Environment", "Equipment", "Safety", "Privacy", "Professional"];
 
   return (
     <Layout>
@@ -61,66 +23,49 @@ const Gallery = () => {
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl font-bold mb-6">Gallery</h1>
           <p className="text-xl text-purple-100">
-            Professional environment designed for safety, comfort, and discretion
+            A glimpse into the professional environment and atmosphere
           </p>
         </div>
       </section>
 
-      {/* Important Notice */}
-      <section className="py-12 bg-yellow-50 border-l-4 border-yellow-400">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex">
-            <div className="ml-3">
-              <h3 className="text-lg font-medium text-yellow-800">Professional Environment Focus</h3>
-              <div className="mt-2 text-sm text-yellow-700">
-                <p>
-                  This gallery showcases the professional environment and equipment used in sessions. 
-                  All images focus on the professional setup, safety measures, and comfortable spaces 
-                  designed to ensure client well-being and privacy.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Filter Tabs */}
-      <section className="py-8 bg-white sticky top-16 z-40 border-b">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
-              <Badge 
-                key={category} 
-                variant="outline" 
-                className="cursor-pointer hover:bg-purple-50 hover:border-purple-300 px-4 py-2"
-              >
-                {category}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Gallery Grid */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-800 mb-4">Professional Environment</h2>
+            <p className="text-xl text-slate-600">Tasteful imagery showcasing the professional setting and atmosphere</p>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {galleryItems.map((item, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="h-64 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-                  <div className="text-center text-purple-700">
-                    <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                    <p className="text-sm">Professional image placeholder</p>
+            {galleryImages.map((image, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                <CardContent className="p-0">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <p className="text-sm font-medium">{image.category}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-semibold text-slate-800">{item.title}</h3>
-                    <Badge variant="secondary" className="bg-purple-100 text-purple-700">
-                      {item.category}
-                    </Badge>
+                </CardContent>
+              </Card>
+            ))}
+            
+            {/* Placeholder cards for additional content */}
+            {[...Array(4)].map((_, index) => (
+              <Card key={`placeholder-${index}`} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                <CardContent className="p-0">
+                  <div className="relative h-80 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+                    <div className="text-center text-purple-600">
+                      <div className="text-4xl mb-2">📸</div>
+                      <p className="text-sm font-medium">More images coming soon</p>
+                    </div>
                   </div>
-                  <p className="text-slate-600">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -128,68 +73,52 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Professional Standards */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">Professional Standards</h2>
-            <p className="text-xl text-slate-600">Commitment to excellence in every aspect</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center">
-              <CardContent className="p-8">
-                <div className="h-16 w-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl text-purple-600">🏠</span>
-                </div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-4">Professional Environment</h3>
-                <p className="text-slate-600">
-                  Dedicated professional space designed specifically for discipline sessions, 
-                  ensuring privacy, comfort, and safety for all clients.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center">
-              <CardContent className="p-8">
-                <div className="h-16 w-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl text-purple-600">🛡️</span>
-                </div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-4">Safety First</h3>
-                <p className="text-slate-600">
-                  All equipment is professionally maintained and sanitized. Safety protocols 
-                  are strictly followed with emergency procedures in place.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center">
-              <CardContent className="p-8">
-                <div className="h-16 w-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl text-purple-600">🔒</span>
-                </div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-4">Complete Discretion</h3>
-                <p className="text-slate-600">
-                  Private entrance, soundproofed rooms, and strict confidentiality protocols 
-                  ensure your privacy is completely protected.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-6">Experience the Professional Difference</h2>
-          <p className="text-xl mb-8 text-purple-100">
-            See firsthand the professional environment and attention to detail that sets my services apart.
-          </p>
-          <div className="space-x-4">
-            <Badge className="bg-white text-purple-600 px-4 py-2 text-lg font-medium">
-              Book a consultation to see the space in person
-            </Badge>
+      {/* Environment Description */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-800 mb-6">The Professional Environment</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3">Studio Setting</h3>
+                  <p className="text-slate-600">
+                    A clean, private, and professionally maintained space designed for comfort, safety, 
+                    and the optimal session experience.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3">Privacy & Discretion</h3>
+                  <p className="text-slate-600">
+                    Complete privacy is ensured with a discrete entrance and soundproofed environment 
+                    for your comfort and confidentiality.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3">Safety Equipment</h3>
+                  <p className="text-slate-600">
+                    All equipment is regularly maintained, sanitized, and meets the highest safety 
+                    standards for professional use.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-slate-800 mb-3">Comfortable Amenities</h3>
+                  <p className="text-slate-600">
+                    Changing facilities, refreshments, and comfortable seating areas for pre and 
+                    post-session relaxation.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

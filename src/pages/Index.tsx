@@ -35,20 +35,20 @@ const Index = () => {
       <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800">
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-fade-in">
             Mya The Disciplinarian
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-purple-100 animate-fade-in">
+          <p className="text-lg md:text-xl lg:text-2xl mb-6 text-purple-100 animate-fade-in">
             Professional discipline services delivered with discretion, respect, and expertise
           </p>
-          <p className="text-lg mb-8 text-purple-200 animate-fade-in">
+          <p className="text-base md:text-lg mb-6 text-purple-200 animate-fade-in">
             Based in Bedfordshire, but available to travel and make arrangements to perform elsewhere
           </p>
-          <div className="space-x-4 animate-fade-in">
-            <Button asChild size="lg" className="bg-white text-purple-900 hover:bg-purple-50">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
+            <Button asChild size="lg" className="bg-white text-purple-900 hover:bg-purple-50 w-full sm:w-auto">
               <Link to="/booking">Book Session</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-purple-900">
+            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-purple-900 w-full sm:w-auto">
               <Link to="/services">Explore Services</Link>
             </Button>
           </div>
@@ -56,20 +56,20 @@ const Index = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="order-2 lg:order-1">
-              <h2 className="text-4xl font-bold text-slate-800 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
                 Welcome to Professional Discipline
               </h2>
-              <p className="text-lg text-slate-600 mb-6">
+              <p className="text-base md:text-lg text-slate-600 mb-4">
                 I am Mya, a professional disciplinarian dedicated to providing safe, consensual, and 
                 transformative experiences. With years of experience and a deep understanding of the 
                 psychological and physical aspects of discipline, I offer a unique service tailored 
                 to your individual needs.
               </p>
-              <p className="text-lg text-slate-600 mb-8">
+              <p className="text-base md:text-lg text-slate-600 mb-6">
                 Every session is conducted with the utmost respect for boundaries, clear communication, 
                 and an unwavering commitment to your safety and satisfaction.
               </p>
@@ -80,9 +80,9 @@ const Index = () => {
             <div className="order-1 lg:order-2">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/lovable-uploads/0f879d97-04d8-4625-a6b8-fa002a1f6bd6.png" 
+                  src="/lovable-uploads/5f3f8033-3edd-4e81-b177-dda629760acb.png" 
                   alt="Mya The Disciplinarian" 
-                  className="w-full h-96 object-cover"
+                  className="w-full h-80 md:h-96 object-cover"
                 />
               </div>
             </div>
@@ -91,13 +91,13 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">Why Choose My Services</h2>
-            <p className="text-xl text-slate-600">Professional standards meet personal care</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose My Services</h2>
+            <p className="text-lg md:text-xl text-slate-600">Professional standards meet personal care</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6 text-center">
@@ -112,15 +112,15 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">Session Rates</h2>
-            <p className="text-xl text-slate-600">Clear, transparent pricing for all services</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Session Rates</h2>
+            <p className="text-lg md:text-xl text-slate-600">Clear, transparent pricing for all services</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <Card className="hover:shadow-lg transition-shadow duration-300 border-purple-200">
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-6 text-center">
                 <h3 className="text-2xl font-bold text-purple-700 mb-4">Newbie Sessions</h3>
                 <div className="text-4xl font-bold text-slate-800 mb-2">£300</div>
                 <p className="text-slate-600 mb-4">1.5 hours</p>
@@ -129,7 +129,7 @@ const Index = () => {
             </Card>
             
             <Card className="hover:shadow-lg transition-shadow duration-300 border-purple-200">
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-6 text-center">
                 <h3 className="text-2xl font-bold text-purple-700 mb-4">Regular Clients</h3>
                 <div className="text-4xl font-bold text-slate-800 mb-2">£250</div>
                 <p className="text-slate-600 mb-4">per hour</p>
@@ -138,7 +138,7 @@ const Index = () => {
             </Card>
           </div>
           
-          <div className="text-center mt-12">
+          <div className="text-center mt-8">
             <Card className="bg-purple-50 border-purple-200 max-w-2xl mx-auto">
               <CardContent className="p-6">
                 <Shield className="h-8 w-8 text-purple-600 mx-auto mb-3" />
@@ -152,14 +152,14 @@ const Index = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
-          <p className="text-xl mb-8 text-purple-100">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Begin Your Journey?</h2>
+          <p className="text-lg md:text-xl mb-6 text-purple-100">
             Take the first step towards a professional and transformative experience. 
             Book your session today and discover what makes my services unique.
           </p>
-          <div className="space-x-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50">
               <Link to="/booking">Book Now</Link>
             </Button>

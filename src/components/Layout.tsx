@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,11 @@ import { Button } from "@/components/ui/button";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -60,6 +65,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 size="sm"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="z-50 relative"
+                aria-label="Toggle menu"
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
@@ -99,23 +105,23 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <main className="overflow-x-hidden">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-slate-800 text-white py-12">
+      <footer className="bg-slate-800 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-2xl font-bold mb-4">Mya The Disciplinarian</h3>
-              <p className="text-slate-300">
+              <h3 className="text-xl font-bold mb-3">Mya The Disciplinarian</h3>
+              <p className="text-slate-300 text-sm">
                 Professional discipline services with discretion, respect, and expertise.
               </p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
+              <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
+              <ul className="space-y-1">
                 {navigation.map((item) => (
                   <li key={item.name}>
                     <Link
                       to={item.href}
-                      className="text-slate-300 hover:text-white transition-colors"
+                      className="text-slate-300 hover:text-white transition-colors text-sm"
                     >
                       {item.name}
                     </Link>
@@ -124,9 +130,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               </ul>
             </div>
           </div>
-          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 Mya The Disciplinarian. All rights reserved.</p>
-            <p className="mt-2 text-sm">
+          <div className="border-t border-slate-700 mt-6 pt-6 text-center text-slate-400">
+            <p className="text-sm">&copy; 2024 Mya The Disciplinarian. All rights reserved.</p>
+            <p className="mt-1 text-xs">
               Privacy guaranteed. Professional services for consenting adults only.
             </p>
           </div>

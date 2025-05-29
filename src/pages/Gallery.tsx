@@ -13,6 +13,21 @@ const Gallery = () => {
       src: "/lovable-uploads/73930176-d6f8-4a94-95d4-50092c926332.png",
       alt: "Professional portrait",
       category: "Portrait"
+    },
+    {
+      src: "/lovable-uploads/c625981c-0049-4d07-9905-4d9031f79418.png",
+      alt: "Professional discipline setting",
+      category: "Environment"
+    },
+    {
+      src: "/lovable-uploads/88c3bd1f-5074-478b-b0df-737513835e9b.png",
+      alt: "Professional session atmosphere",
+      category: "Session"
+    },
+    {
+      src: "/lovable-uploads/7db142e7-2841-4ee3-af3a-e8d9d2153191.png",
+      alt: "Professional training environment",
+      category: "Training"
     }
   ];
 
@@ -45,6 +60,7 @@ const Gallery = () => {
                       src={image.src}
                       alt={image.alt}
                       className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 text-white">
@@ -56,19 +72,17 @@ const Gallery = () => {
               </Card>
             ))}
             
-            {/* Placeholder cards for additional content */}
-            {[...Array(4)].map((_, index) => (
-              <Card key={`placeholder-${index}`} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-0">
-                  <div className="relative h-80 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-                    <div className="text-center text-purple-600">
-                      <div className="text-4xl mb-2">📸</div>
-                      <p className="text-sm font-medium">More images coming soon</p>
-                    </div>
+            {/* Placeholder card for additional content */}
+            <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+              <CardContent className="p-0">
+                <div className="relative h-80 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+                  <div className="text-center text-purple-600">
+                    <div className="text-4xl mb-2">📸</div>
+                    <p className="text-sm font-medium">More images coming soon</p>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

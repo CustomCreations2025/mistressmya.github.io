@@ -81,8 +81,20 @@
     @apply border-border;
   }
 
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -108,5 +120,23 @@
   
   .hover-scale:hover {
     transform: scale(1.05);
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  .no-scrollbar-x {
+    overflow-x: hidden;
+  }
+
+  /* Optimize button text display */
+  button {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 768px) {
+    button {
+      white-space: normal;
+      word-wrap: break-word;
+    }
   }
 }

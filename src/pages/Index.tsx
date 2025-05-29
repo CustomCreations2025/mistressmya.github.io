@@ -59,7 +59,7 @@ const Index = () => {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="order-2 lg:order-1">
               <h2 className="text-4xl font-bold text-slate-800 mb-6">
                 Welcome to Professional Discipline
               </h2>
@@ -73,16 +73,16 @@ const Index = () => {
                 Every session is conducted with the utmost respect for boundaries, clear communication, 
                 and an unwavering commitment to your safety and satisfaction.
               </p>
-              <Button asChild className="bg-gradient-to-r from-purple-600 to-pink-600">
+              <Button asChild className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
                 <Link to="/about">Learn More About Me</Link>
               </Button>
             </div>
-            <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-8 h-96 flex items-center justify-center">
-              <div className="text-center text-purple-700">
+            <div className="order-1 lg:order-2">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   src="/lovable-uploads/0f879d97-04d8-4625-a6b8-fa002a1f6bd6.png" 
                   alt="Mya The Disciplinarian" 
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-96 object-cover"
                 />
               </div>
             </div>

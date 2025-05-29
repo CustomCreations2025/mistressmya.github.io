@@ -20,13 +20,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100 overflow-x-hidden">
       {/* Navigation */}
       <nav className="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
-              <Link to="/" className="text-2xl font-bold text-slate-800 hover:text-purple-700 transition-colors">
+              <Link to="/" className="text-xl md:text-2xl font-bold text-slate-800 hover:text-purple-700 transition-colors">
                 Mya The Disciplinarian
               </Link>
             </div>
@@ -59,6 +59,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="z-50 relative"
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
@@ -68,8 +69,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+          <div className="md:hidden fixed inset-0 top-16 bg-white z-40 overflow-y-auto">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -86,7 +87,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               ))}
               <div className="px-3 py-2">
                 <Button asChild className="w-full bg-gradient-to-r from-purple-600 to-pink-600">
-                  <Link to="/booking">Book Session</Link>
+                  <Link to="/booking" onClick={() => setIsMenuOpen(false)}>Book Session</Link>
                 </Button>
               </div>
             </div>
@@ -95,12 +96,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </nav>
 
       {/* Main Content */}
-      <main>{children}</main>
+      <main className="overflow-x-hidden">{children}</main>
 
       {/* Footer */}
       <footer className="bg-slate-800 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-2xl font-bold mb-4">Mya The Disciplinarian</h3>
               <p className="text-slate-300">
@@ -121,13 +122,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contact</h4>
-              <p className="text-slate-300">
-                Email: contact@mythedisciplinarian.com<br />
-                Strictly confidential consultations available
-              </p>
             </div>
           </div>
           <div className="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">

@@ -9,8 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Clock, Shield, Heart } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -29,8 +27,6 @@ const Booking = () => {
       safety: false
     }
   });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const services = [
     "Newbie Session (1.5 hours - £300)",
@@ -57,53 +53,6 @@ const Booking = () => {
       ...prev,
       agreements: { ...prev.agreements, [field]: checked }
     }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const { data, error } = await supabase.functions.invoke('send-booking-notification', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          service: formData.service,
-          preferredDate: formData.preferredDate,
-          preferredTime: formData.preferredTime,
-          experience: formData.experience,
-          message: formData.message
-        }
-      });
-
-      if (error) throw error;
-
-      toast.success("Booking request sent successfully! You'll receive a confirmation email shortly.");
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        preferredDate: "",
-        preferredTime: "",
-        experience: "",
-        message: "",
-        agreements: {
-          age: false,
-          consent: false,
-          discretion: false,
-          safety: false
-        }
-      });
-    } catch (error: any) {
-      console.error("Error submitting booking:", error);
-      toast.error("Failed to send booking request. Please try again or contact us directly.");
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   const allAgreementsChecked = Object.values(formData.agreements).every(Boolean);
@@ -134,7 +83,11 @@ const Booking = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form action="https://formsubmit.co/welcome2myasworld@gmail.com" method="POST" className="space-y-6">
+                    {/* Hidden Formsubmit fields */}
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="hidden" name="_next" value="https://www.mistressmya.world/thank-you.html" />
+                    
                     {/* Personal Information */}
                     <div className="space-y-4">
                       <h3 className="text-lg font-semibold text-slate-800">Personal Information</h3>
@@ -144,6 +97,7 @@ const Booking = () => {
                           <Label htmlFor="name">Full Name *</Label>
                           <Input
                             id="name"
+                            name="name"
                             value={formData.name}
                             onChange={(e) => handleInputChange("name", e.target.value)}
                             required
@@ -153,6 +107,7 @@ const Booking = () => {
                           <Label htmlFor="email">Email Address *</Label>
                           <Input
                             id="email"
+                            name="email"
                             type="email"
                             value={formData.email}
                             onChange={(e) => handleInputChange("email", e.target.value)}
@@ -165,6 +120,7 @@ const Booking = () => {
                         <Label htmlFor="phone">Phone Number</Label>
                         <Input
                           id="phone"
+                          name="phone"
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
@@ -179,16 +135,18 @@ const Booking = () => {
                       
                       <div>
                         <Label htmlFor="service">Preferred Service *</Label>
-                        <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a service" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {services.map((service) => (
-                              <SelectItem key={service} value={service}>{service}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <select 
+                          name="service" 
+                          value={formData.service} 
+                          onChange={(e) => handleInputChange("service", e.target.value)}
+                          required
+                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                        >
+                          <option value="">Select a service</option>
+                          {services.map((service) => (
+                            <option key={service} value={service}>{service}</option>
+                          ))}
+                        </select>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -196,6 +154,7 @@ const Booking = () => {
                           <Label htmlFor="preferredDate">Preferred Date</Label>
                           <Input
                             id="preferredDate"
+                            name="preferredDate"
                             type="date"
                             value={formData.preferredDate}
                             onChange={(e) => handleInputChange("preferredDate", e.target.value)}
@@ -205,6 +164,7 @@ const Booking = () => {
                           <Label htmlFor="preferredTime">Preferred Time</Label>
                           <Input
                             id="preferredTime"
+                            name="preferredTime"
                             type="time"
                             value={formData.preferredTime}
                             onChange={(e) => handleInputChange("preferredTime", e.target.value)}
@@ -214,16 +174,18 @@ const Booking = () => {
 
                       <div>
                         <Label htmlFor="experience">Experience Level *</Label>
-                        <Select value={formData.experience} onValueChange={(value) => handleInputChange("experience", value)}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select your experience level" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {experienceLevels.map((level) => (
-                              <SelectItem key={level} value={level}>{level}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <select 
+                          name="experience" 
+                          value={formData.experience} 
+                          onChange={(e) => handleInputChange("experience", e.target.value)}
+                          required
+                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                        >
+                          <option value="">Select your experience level</option>
+                          {experienceLevels.map((level) => (
+                            <option key={level} value={level}>{level}</option>
+                          ))}
+                        </select>
                       </div>
                     </div>
 
@@ -235,6 +197,7 @@ const Booking = () => {
                         <Label htmlFor="message">Special Requests or Questions</Label>
                         <Textarea
                           id="message"
+                          name="message"
                           value={formData.message}
                           onChange={(e) => handleInputChange("message", e.target.value)}
                           placeholder="Please share any specific interests, boundaries, or questions you may have..."
@@ -249,10 +212,14 @@ const Booking = () => {
                       
                       <div className="space-y-3">
                         <div className="flex items-start space-x-2">
-                          <Checkbox
+                          <input
+                            type="checkbox"
                             id="age"
+                            name="age_confirmation"
                             checked={formData.agreements.age}
-                            onCheckedChange={(checked) => handleAgreementChange("age", checked as boolean)}
+                            onChange={(e) => handleAgreementChange("age", e.target.checked)}
+                            required
+                            className="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                           />
                           <Label htmlFor="age" className="text-sm leading-5">
                             I confirm that I am 21 years of age or older and legally able to consent to these services.
@@ -260,10 +227,14 @@ const Booking = () => {
                         </div>
                         
                         <div className="flex items-start space-x-2">
-                          <Checkbox
+                          <input
+                            type="checkbox"
                             id="consent"
+                            name="consent_confirmation"
                             checked={formData.agreements.consent}
-                            onCheckedChange={(checked) => handleAgreementChange("consent", checked as boolean)}
+                            onChange={(e) => handleAgreementChange("consent", e.target.checked)}
+                            required
+                            className="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                           />
                           <Label htmlFor="consent" className="text-sm leading-5">
                             I understand this is a professional service and all activities are consensual with clear boundaries.
@@ -271,10 +242,14 @@ const Booking = () => {
                         </div>
                         
                         <div className="flex items-start space-x-2">
-                          <Checkbox
+                          <input
+                            type="checkbox"
                             id="discretion"
+                            name="discretion_confirmation"
                             checked={formData.agreements.discretion}
-                            onCheckedChange={(checked) => handleAgreementChange("discretion", checked as boolean)}
+                            onChange={(e) => handleAgreementChange("discretion", e.target.checked)}
+                            required
+                            className="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                           />
                           <Label htmlFor="discretion" className="text-sm leading-5">
                             I agree to maintain discretion and confidentiality about our professional relationship.
@@ -282,10 +257,14 @@ const Booking = () => {
                         </div>
                         
                         <div className="flex items-start space-x-2">
-                          <Checkbox
+                          <input
+                            type="checkbox"
                             id="safety"
+                            name="safety_confirmation"
                             checked={formData.agreements.safety}
-                            onCheckedChange={(checked) => handleAgreementChange("safety", checked as boolean)}
+                            onChange={(e) => handleAgreementChange("safety", e.target.checked)}
+                            required
+                            className="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                           />
                           <Label htmlFor="safety" className="text-sm leading-5">
                             I understand the importance of safety protocols and agree to follow all safety guidelines.
@@ -298,9 +277,9 @@ const Booking = () => {
                       type="submit" 
                       size="lg" 
                       className="w-full bg-gradient-to-r from-purple-600 to-pink-600"
-                      disabled={!allAgreementsChecked || isSubmitting}
+                      disabled={!allAgreementsChecked}
                     >
-                      {isSubmitting ? "Sending..." : "Submit Booking Request"}
+                      Submit Booking Request
                     </Button>
                   </form>
                 </CardContent>

@@ -104,7 +104,7 @@ const Booking = () => {
                   >
                     {/* Hidden Formsubmit fields */}
                     <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_next" value="https://customcreations2025.github.io/mistressmya.github.io/thank-you.html" />
+                    <input type="hidden" name="_next" value="https://prodommemistressmya.lovable.app/thank-you" />
                     <input type="hidden" name="_autoresponse" value="Thank you for your booking request! I will get back to you shortly. If you need urgent assistance, please email welcome2myasworld@gmail.com." />
                     
                     {/* Error Message */}

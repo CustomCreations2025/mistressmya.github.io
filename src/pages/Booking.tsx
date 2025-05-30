@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -61,7 +62,9 @@ const Booking = () => {
     
     // Add a small delay to show the loading state
     setTimeout(() => {
-      // Let Formsubmit handle submission
+      // The form will submit naturally to Formsubmit
+      // If there's an error, it would be caught here
+      // For now, we'll let Formsubmit handle the submission
     }, 500);
   };
 
@@ -101,7 +104,7 @@ const Booking = () => {
                   >
                     {/* Hidden Formsubmit fields */}
                     <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_next" value="https://mistressmya.world/thank-you.html" />
+                    <input type="hidden" name="_next" value="https://customcreations2025.github.io/mistressmya.github.io/thank-you.html" />
                     <input type="hidden" name="_autoresponse" value="Thank you for your booking request! I will get back to you shortly. If you need urgent assistance, please email welcome2myasworld@gmail.com." />
                     
                     {/* Error Message */}
@@ -359,4 +362,36 @@ const Booking = () => {
                     <p className="text-sm text-slate-600">All personal information is kept strictly confidential.</p>
                   </div>
                   <div>
-                    <h4 className="
+                    <h4 className="font-semibold text-slate-800">Safety Protocols</h4>
+                    <p className="text-sm text-slate-600">Comprehensive safety measures are in place for all sessions.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-800">Professional Environment</h4>
+                    <p className="text-sm text-slate-600">Clean, private, and professionally maintained space.</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center">
+                    <Heart className="h-5 w-5 mr-2 text-purple-600" />
+                    Aftercare
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-slate-600">
+                    Comprehensive aftercare is provided with every session, including emotional support 
+                    and follow-up check-ins to ensure your well-being.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default Booking;

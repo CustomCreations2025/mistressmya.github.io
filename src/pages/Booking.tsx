@@ -5,10 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
-import { Clock, Shield, Heart } from "lucide-react";
+import { Clock, Shield, Heart, Loader2 } from "lucide-react";
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -27,6 +25,9 @@ const Booking = () => {
       safety: false
     }
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const services = [
     "Newbie Session (1.5 hours - £300)",
@@ -53,6 +54,18 @@ const Booking = () => {
       ...prev,
       agreements: { ...prev.agreements, [field]: checked }
     }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    setIsSubmitting(true);
+    setSubmitError("");
+    
+    // Add a small delay to show the loading state
+    setTimeout(() => {
+      // The form will submit naturally to Formsubmit
+      // If there's an error, it would be caught here
+      // For now, we'll let Formsubmit handle the submission
+    }, 500);
   };
 
   const allAgreementsChecked = Object.values(formData.agreements).every(Boolean);
@@ -83,11 +96,29 @@ const Booking = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <form action="https://formsubmit.co/welcome2myasworld@gmail.com" method="POST" className="space-y-6">
+                  <form 
+                    action="https://formsubmit.co/welcome2myasworld@gmail.com" 
+                    method="POST" 
+                    className="space-y-6"
+                    onSubmit={handleSubmit}
+                  >
                     {/* Hidden Formsubmit fields */}
                     <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_next" value="https://www.mistressmya.world/thank-you.html" />
+                    <input type="hidden" name="_next" value="https://www.mistressmya.world/thank-you" />
+                    <input type="hidden" name="_autoresponse" value="Thank you for your booking request! I will get back to you shortly. If you need urgent assistance, please email welcome2myasworld@gmail.com." />
                     
+                    {/* Error Message */}
+                    {submitError && (
+                      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                        <p className="text-red-700 text-sm">
+                          {submitError} Please try again or email me directly at{" "}
+                          <a href="mailto:welcome2myasworld@gmail.com" className="underline">
+                            welcome2myasworld@gmail.com
+                          </a>
+                        </p>
+                      </div>
+                    )}
+
                     {/* Personal Information */}
                     <div className="space-y-4">
                       <h3 className="text-lg font-semibold text-slate-800">Personal Information</h3>
@@ -277,9 +308,16 @@ const Booking = () => {
                       type="submit" 
                       size="lg" 
                       className="w-full bg-gradient-to-r from-purple-600 to-pink-600"
-                      disabled={!allAgreementsChecked}
+                      disabled={!allAgreementsChecked || isSubmitting}
                     >
-                      Submit Booking Request
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        "Submit Booking Request"
+                      )}
                     </Button>
                   </form>
                 </CardContent>

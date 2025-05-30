@@ -71,3 +71,4 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ed02cde6-b875-4272-9e7b-f9de235f3786/deploy-status)](https://app.netlify.com/projects/mistressmya/deploys)

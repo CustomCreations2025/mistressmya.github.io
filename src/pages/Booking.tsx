@@ -1,10 +1,10 @@
-
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
 import { Clock, Shield, Heart, Loader2 } from "lucide-react";
 
@@ -17,6 +17,8 @@ const Booking = () => {
     preferredDate: "",
     preferredTime: "",
     experience: "",
+    contactMethod: "",
+    otherContactMethod: "",
     message: "",
     agreements: {
       age: false,
@@ -43,6 +45,14 @@ const Booking = () => {
     "Some experience",
     "Experienced",
     "Very experienced"
+  ];
+
+  const contactMethods = [
+    "Email",
+    "Text message",
+    "Phone call",
+    "WhatsApp",
+    "Other"
   ];
 
   const handleInputChange = (field: string, value: string) => {
@@ -104,7 +114,7 @@ const Booking = () => {
                   >
                     {/* Hidden Formsubmit fields */}
                     <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_next" value="https://prodommemistressmya.lovable.app/thank-you" />
+                    <input type="hidden" name="_next" value="https://www.mistressmya.world/thank-you" />
                     <input type="hidden" name="_autoresponse" value="Thank you for your booking request! I will get back to you shortly. If you need urgent assistance, please email welcome2myasworld@gmail.com." />
                     
                     {/* Error Message */}
@@ -158,6 +168,41 @@ const Booking = () => {
                         />
                         <p className="text-sm text-slate-500 mt-1">Optional, but helpful for urgent communications</p>
                       </div>
+                    </div>
+
+                    {/* Preferred Contact Method */}
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-semibold text-slate-800">Preferred Contact Method</h3>
+                      <p className="text-sm text-slate-600 mb-4">
+                        What is your safe and preferred contact method? I will only contact you using the selected preferred details. I will not use any other contact methods.
+                      </p>
+                      
+                      <RadioGroup 
+                        value={formData.contactMethod} 
+                        onValueChange={(value) => handleInputChange("contactMethod", value)}
+                        name="contact_method"
+                        className="space-y-3"
+                      >
+                        {contactMethods.map((method) => (
+                          <div key={method} className="flex items-center space-x-2">
+                            <RadioGroupItem value={method} id={method} />
+                            <Label htmlFor={method}>{method}</Label>
+                          </div>
+                        ))}
+                      </RadioGroup>
+
+                      {formData.contactMethod === "Other" && (
+                        <div className="mt-4">
+                          <Label htmlFor="otherContactMethod">Please specify your preferred contact method:</Label>
+                          <Input
+                            id="otherContactMethod"
+                            name="other_contact_method"
+                            value={formData.otherContactMethod}
+                            onChange={(e) => handleInputChange("otherContactMethod", e.target.value)}
+                            placeholder="Please specify..."
+                          />
+                        </div>
+                      )}
                     </div>
 
                     {/* Session Details */}

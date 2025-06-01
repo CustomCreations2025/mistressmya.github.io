@@ -16,160 +16,93 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form and Information */}
+      {/* Contact Information Only */}
       <section className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-slate-800">Send a Message</CardTitle>
-                  <p className="text-slate-600">
-                    I welcome all professional inquiries and questions. Please use this form for non-booking related communication.
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <form action="https://formsubmit.co/welcome2myasworld@gmail.com" method="POST" className="space-y-6">
-                    {/* Hidden fields for FormSubmit configuration */}
-                    <input type="hidden" name="_next" value="https://www.mistressmya.world/thank-you" />
-                    <input type="hidden" name="_subject" value="New Contact Form Submission!" />
-                    <input type="hidden" name="_captcha" value="false" />
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-2">Name *</label>
-                        <input
-                          type="text"
-                          name="name"
-                          id="name"
-                          required
-                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-2">Email Address *</label>
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          required
-                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-2">Message *</label>
-                      <textarea
-                        name="message"
-                        id="message"
-                        rows={6}
-                        required
-                        placeholder="Please share your questions or comments..."
-                        className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      />
-                    </div>
-
-                    {/* Honeypot for spam prevention */}
-                    <input type="text" name="_honey" style={{ display: 'none' }} />
-
-                    <button 
-                      type="submit"
-                      className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 rounded-md px-8 w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700"
-                    >
-                      Send Message
-                    </button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Contact Information */}
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Mail className="h-5 w-5 mr-2 text-purple-600" />
-                    Contact Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-slate-800">Email</h4>
-                    <p className="text-slate-600">welcome2myasworld@gmail.com</p>
-                    <p className="text-sm text-slate-500 mt-1">Primary method of communication</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-800">Location</h4>
-                    <p className="text-slate-600">Based in Bedfordshire</p>
-                    <p className="text-sm text-slate-500 mt-1">Available to travel and make arrangements to perform elsewhere</p>
-                  </div>
-                </CardContent>
-              </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Mail className="h-5 w-5 mr-2 text-purple-600" />
+                  Contact Information
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-slate-800">Email</h4>
+                  <p className="text-slate-600">welcome2myasworld@gmail.com</p>
+                  <p className="text-sm text-slate-500 mt-1">Primary method of communication</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-800">Location</h4>
+                  <p className="text-slate-600">Based in Bedfordshire</p>
+                  <p className="text-sm text-slate-500 mt-1">Available to travel and make arrangements to perform elsewhere</p>
+                </div>
+              </CardContent>
+            </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Clock className="h-5 w-5 mr-2 text-purple-600" />
-                    Response Times
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-slate-800">General Inquiries</h4>
-                    <p className="text-sm text-slate-600">Within 24 hours</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-800">Booking Requests</h4>
-                    <p className="text-sm text-slate-600">Within 12 hours</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-800">Urgent Matters</h4>
-                    <p className="text-sm text-slate-600">Same day when possible</p>
-                  </div>
-                </CardContent>
-              </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Clock className="h-5 w-5 mr-2 text-purple-600" />
+                  Response Times
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-slate-800">General Inquiries</h4>
+                  <p className="text-sm text-slate-600">Within 24 hours</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-800">Booking Requests</h4>
+                  <p className="text-sm text-slate-600">Within 12 hours</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-800">Urgent Matters</h4>
+                  <p className="text-sm text-slate-600">Same day when possible</p>
+                </div>
+              </CardContent>
+            </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Shield className="h-5 w-5 mr-2 text-purple-600" />
-                    Privacy Notice
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-slate-600">
-                    All communications are kept strictly confidential. Your personal information 
-                    is protected and will never be shared with third parties. I take your privacy 
-                    seriously and maintain the highest standards of discretion.
-                  </p>
-                </CardContent>
-              </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Shield className="h-5 w-5 mr-2 text-purple-600" />
+                  Privacy Notice
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-slate-600">
+                  All communications are kept strictly confidential. Your personal information 
+                  is protected and will never be shared with third parties. I take your privacy 
+                  seriously and maintain the highest standards of discretion.
+                </p>
+              </CardContent>
+            </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <MessageCircle className="h-5 w-5 mr-2 text-purple-600" />
-                    Communication Guidelines
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div>
-                    <h4 className="font-semibold text-slate-800 text-sm">Professional Tone</h4>
-                    <p className="text-xs text-slate-600">Please maintain a respectful, professional tone in all communications.</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-800 text-sm">Clear Subject Lines</h4>
-                    <p className="text-xs text-slate-600">Use clear, descriptive subject lines to help prioritize responses.</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-800 text-sm">Booking vs. Inquiry</h4>
-                    <p className="text-xs text-slate-600">Use the dedicated booking form for session requests.</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <MessageCircle className="h-5 w-5 mr-2 text-purple-600" />
+                  Communication Guidelines
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div>
+                  <h4 className="font-semibold text-slate-800 text-sm">Professional Tone</h4>
+                  <p className="text-xs text-slate-600">Please maintain a respectful, professional tone in all communications.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-800 text-sm">Clear Subject Lines</h4>
+                  <p className="text-xs text-slate-600">Use clear, descriptive subject lines to help prioritize responses.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-800 text-sm">Booking vs. Inquiry</h4>
+                  <p className="text-xs text-slate-600">Use the dedicated booking form for session requests.</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

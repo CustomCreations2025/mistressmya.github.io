@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,7 +19,7 @@ const Booking = () => {
     preferredTime: "",
     experience: "",
     contactMethod: "",
-    otherContactMethod: "",
+    contactDetails: "",
     message: "",
     agreements: {
       age: false,
@@ -172,9 +173,9 @@ const Booking = () => {
 
                     {/* Preferred Contact Method */}
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-slate-800">Preferred Contact Method</h3>
+                      <h3 className="text-lg font-semibold text-slate-800">What is your safe and preferred contact method?</h3>
                       <p className="text-sm text-slate-600 mb-4">
-                        What is your safe and preferred contact method? I will only contact you using the selected preferred details. I will not use any other contact methods.
+                        I will only contact you using the preferred method you provide. I will not use any other contact methods.
                       </p>
                       
                       <RadioGroup 
@@ -191,18 +192,17 @@ const Booking = () => {
                         ))}
                       </RadioGroup>
 
-                      {formData.contactMethod === "Other" && (
-                        <div className="mt-4">
-                          <Label htmlFor="otherContactMethod">Please specify your preferred contact method:</Label>
-                          <Input
-                            id="otherContactMethod"
-                            name="other_contact_method"
-                            value={formData.otherContactMethod}
-                            onChange={(e) => handleInputChange("otherContactMethod", e.target.value)}
-                            placeholder="Please specify..."
-                          />
-                        </div>
-                      )}
+                      <div className="mt-4">
+                        <Label htmlFor="contactDetails">Please provide the contact details for your selected method (e.g., your email, phone number, or handle) *</Label>
+                        <Input
+                          id="contactDetails"
+                          name="contact_details"
+                          value={formData.contactDetails}
+                          onChange={(e) => handleInputChange("contactDetails", e.target.value)}
+                          placeholder="Enter your contact details..."
+                          required
+                        />
+                      </div>
                     </div>
 
                     {/* Session Details */}

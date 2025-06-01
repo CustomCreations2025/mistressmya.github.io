@@ -1,69 +1,9 @@
 
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useState } from "react";
 import { Mail, Clock, Shield, MessageCircle } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    inquiryType: "",
-    message: ""
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const inquiryTypes = [
-    "General Information",
-    "Booking Inquiry",
-    "Service Questions",
-    "Media/Press Inquiry",
-    "Professional Consultation",
-    "Other"
-  ];
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const { data, error } = await supabase.functions.invoke('send-contact-message', {
-        body: formData
-      });
-
-      if (error) throw error;
-
-      toast.success("Message sent successfully! You'll receive a confirmation email shortly.");
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        inquiryType: "",
-        message: ""
-      });
-    } catch (error: any) {
-      console.error("Error submitting contact form:", error);
-      toast.error("Failed to send message. Please try again or contact us directly.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <Layout>
       {/* Hero Section */}
@@ -90,73 +30,56 @@ const Contact = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form action="https://formsubmit.co/welcome2myasworld@gmail.com" method="POST" className="space-y-6">
+                    {/* Hidden fields for FormSubmit configuration */}
+                    <input type="hidden" name="_next" value="https://www.mistressmya.world/thank-you" />
+                    <input type="hidden" name="_subject" value="New Contact Form Submission!" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="name">Name *</Label>
-                        <Input
+                        <label htmlFor="name" className="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-2">Name *</label>
+                        <input
+                          type="text"
+                          name="name"
                           id="name"
-                          value={formData.name}
-                          onChange={(e) => handleInputChange("name", e.target.value)}
                           required
+                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                         />
                       </div>
                       <div>
-                        <Label htmlFor="email">Email Address *</Label>
-                        <Input
-                          id="email"
+                        <label htmlFor="email" className="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-2">Email Address *</label>
+                        <input
                           type="email"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange("email", e.target.value)}
+                          name="email"
+                          id="email"
                           required
+                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <Label htmlFor="inquiryType">Type of Inquiry *</Label>
-                      <Select value={formData.inquiryType} onValueChange={(value) => handleInputChange("inquiryType", value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select inquiry type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {inquiryTypes.map((type) => (
-                            <SelectItem key={type} value={type}>{type}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="subject">Subject *</Label>
-                      <Input
-                        id="subject"
-                        value={formData.subject}
-                        onChange={(e) => handleInputChange("subject", e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
+                      <label htmlFor="message" className="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-2">Message *</label>
+                      <textarea
+                        name="message"
                         id="message"
-                        value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
-                        placeholder="Please share your questions or comments..."
                         rows={6}
                         required
+                        placeholder="Please share your questions or comments..."
+                        className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       />
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      size="lg" 
-                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600"
-                      disabled={isSubmitting}
+                    {/* Honeypot for spam prevention */}
+                    <input type="text" name="_honey" style={{ display: 'none' }} />
+
+                    <button 
+                      type="submit"
+                      className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 rounded-md px-8 w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700"
                     >
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </Button>
+                      Send Message
+                    </button>
                   </form>
                 </CardContent>
               </Card>
@@ -311,9 +234,12 @@ const Contact = () => {
             Whether you have questions or are ready to book, I'm here to help you take the next step.
           </p>
           <div className="space-x-4">
-            <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50">
-              <a href="mailto:welcome2myasworld@gmail.com">Send Email</a>
-            </Button>
+            <a 
+              href="mailto:welcome2myasworld@gmail.com"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 rounded-md px-8 bg-white text-purple-600 hover:bg-purple-50"
+            >
+              Send Email
+            </a>
           </div>
         </div>
       </section>

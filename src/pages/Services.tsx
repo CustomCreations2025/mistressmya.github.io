@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -64,7 +63,6 @@ const Services = () => {
     "Psychological discipline",
     "Role play scenarios",
     "Dominance training",
-    "Pegging",
     "Body Worship",
     "Sissification",
     "Foot Worship",

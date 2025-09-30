@@ -88,7 +88,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   className="ml-2 lg:ml-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
                   size="sm"
                 >
-                  <Link to="/booking">Book Session</Link>
+                  <Link to="/booking">Connect With Me</Link>
                 </Button>
               </div>
             </div>
@@ -137,7 +137,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   asChild 
                   className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
                 >
-                  <Link to="/booking" onClick={() => setIsMenuOpen(false)}>Book Session</Link>
+                  <Link to="/booking" onClick={() => setIsMenuOpen(false)}>Connect With Me</Link>
                 </Button>
               </div>
             </div>

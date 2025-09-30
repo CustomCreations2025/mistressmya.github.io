@@ -76,7 +76,7 @@ const Services = () => {
             Tailored disciplinary journeys designed to support your growth, exploration, and empowerment with complete discretion.
           </p>
           <p className="text-base md:text-lg text-purple-200">
-            Based in Bedfordshire, but available to connect and make arrangements elsewhere.
+            Based in Bedfordshire, Northamptonshire & Cambridgeshire, available to connect and make arrangements elsewhere.
           </p>
         </div>
       </section>

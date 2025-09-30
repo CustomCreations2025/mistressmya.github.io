@@ -53,7 +53,7 @@ const About = () => {
                 understanding with physical expertise to create meaningful experiences tailored to your needs.
               </p>
               <p className="text-lg text-slate-600 mb-4">
-                Based in Bedfordshire, I offer my services both locally and am available to travel 
+                Based in Bedfordshire, Northamptonshire & Cambridgeshire, I offer my services both locally and am available to travel 
                 for the right arrangements. Every session is conducted with the utmost respect for 
                 boundaries, clear communication, and an unwavering commitment to your safety and satisfaction.
               </p>
@@ -63,7 +63,7 @@ const About = () => {
                 your desires safely and without judgment.
               </p>
               <Button asChild className="bg-gradient-to-r from-purple-600 to-pink-600">
-                <Link to="/booking">Book a Session</Link>
+                <Link to="/booking">Connect With Me</Link>
               </Button>
             </div>
             <div className="relative">

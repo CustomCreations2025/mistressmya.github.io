@@ -36,7 +36,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-800">Location</h4>
-                  <p className="text-slate-600">Based in Bedfordshire</p>
+                  <p className="text-slate-600">Based in Bedfordshire, Northamptonshire & Cambridgeshire</p>
                   <p className="text-sm text-slate-500 mt-1">Available to travel and make arrangements to perform elsewhere</p>
                 </div>
               </CardContent>

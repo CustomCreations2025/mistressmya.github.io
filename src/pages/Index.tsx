@@ -50,7 +50,7 @@ const Index = () => {
             Guiding disciplinary journeys with discretion, respect, and empowerment
           </p>
           <p className="text-sm md:text-base lg:text-lg mb-6 md:mb-8 text-purple-200 animate-fade-in">
-            Based in Bedfordshire, but available to connect and make arrangements elsewhere
+            Based in Bedfordshire, Northamptonshire & Cambridgeshire, available to connect and make arrangements elsewhere
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto animate-fade-in">
             <Button 

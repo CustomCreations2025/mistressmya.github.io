@@ -14,9 +14,9 @@ const ThankYou = () => {
           <div className="flex justify-center mb-6">
             <CheckCircle className="h-16 w-16 text-green-400" />
           </div>
-          <h1 className="text-5xl font-bold mb-6">Thank you for your booking request!</h1>
+          <h1 className="text-5xl font-bold mb-6">Thank you for expressing interest!</h1>
           <p className="text-xl text-purple-100">
-            Your request has been received successfully
+            Your expression of interest has been received successfully
           </p>
         </div>
       </section>
@@ -31,7 +31,7 @@ const ThankYou = () => {
               </CardHeader>
               <CardContent className="space-y-6 text-center">
                 <p className="text-lg text-slate-700">
-                  I will review your request and get back to you within 24 hours.
+                  I will review your message and get back to you within 24 hours to begin our conversation.
                 </p>
                 
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">

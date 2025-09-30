@@ -32,13 +32,13 @@ const Booking = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  const services = [
-    "Newbie Session (1.5 hours - £300)",
-    "Regular Session (1 hour - £250)",
-    "Extended Session (2 hours - £500)",
-    "Lifestyle Coaching (60 min - £300)",
-    "Couples Session (2 hours - £500)",
-    "Virtual Consultation (45 min - £150)"
+  const experiences = [
+    "First-Time Exploration (1.5 hours)",
+    "Continuing Journey (1 hour)",
+    "Deep Immersion (2 hours)",
+    "Lifestyle Mentoring (60 minutes)",
+    "Partnership Exploration (2 hours)",
+    "Virtual Connection (45 minutes)"
   ];
 
   const experienceLevels = [
@@ -86,9 +86,9 @@ const Booking = () => {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl font-bold mb-6">Book Your Session</h1>
+          <h1 className="text-5xl font-bold mb-6">Connect With Me</h1>
           <p className="text-xl text-purple-100">
-            Begin your journey with a professional consultation
+            Begin your journey with a meaningful conversation about exploration and growth
           </p>
         </div>
       </section>
@@ -101,9 +101,9 @@ const Booking = () => {
             <div className="lg:col-span-2">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl text-slate-800">Booking Request Form</CardTitle>
+                  <CardTitle className="text-2xl text-slate-800">Expression of Interest Form</CardTitle>
                   <p className="text-slate-600">
-                    Please fill out this form to request a session. All information is kept strictly confidential.
+                    Please share a bit about yourself and your interests. All information is kept strictly confidential.
                   </p>
                 </CardHeader>
                 <CardContent>
@@ -116,7 +116,7 @@ const Booking = () => {
                     {/* Hidden Formsubmit fields */}
                     <input type="hidden" name="_captcha" value="false" />
                     <input type="hidden" name="_next" value="https://www.mistressmya.world/thank-you" />
-                    <input type="hidden" name="_autoresponse" value="Thank you for your booking request! I will get back to you shortly. If you need urgent assistance, please email welcome2myasworld@gmail.com." />
+                    <input type="hidden" name="_autoresponse" value="Thank you for expressing interest in connecting! I will get back to you shortly to discuss your journey. If you need urgent assistance, please email welcome2myasworld@gmail.com." />
                     
                     {/* Error Message */}
                     {submitError && (
@@ -205,12 +205,12 @@ const Booking = () => {
                       </div>
                     </div>
 
-                    {/* Session Details */}
+                    {/* Journey Details */}
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-slate-800">Session Details</h3>
+                      <h3 className="text-lg font-semibold text-slate-800">Journey Details</h3>
                       
                       <div>
-                        <Label htmlFor="service">Preferred Service *</Label>
+                        <Label htmlFor="service">Preferred Experience *</Label>
                         <select 
                           name="service" 
                           value={formData.service} 
@@ -218,9 +218,9 @@ const Booking = () => {
                           required
                           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                         >
-                          <option value="">Select a service</option>
-                          {services.map((service) => (
-                            <option key={service} value={service}>{service}</option>
+                          <option value="">Select an experience</option>
+                          {experiences.map((experience) => (
+                            <option key={experience} value={experience}>{experience}</option>
                           ))}
                         </select>
                       </div>
@@ -270,13 +270,13 @@ const Booking = () => {
                       <h3 className="text-lg font-semibold text-slate-800">Additional Information</h3>
                       
                       <div>
-                        <Label htmlFor="message">Special Requests or Questions</Label>
+                        <Label htmlFor="message">Your Interests & Questions</Label>
                         <Textarea
                           id="message"
                           name="message"
                           value={formData.message}
                           onChange={(e) => handleInputChange("message", e.target.value)}
-                          placeholder="Please share any specific interests, boundaries, or questions you may have..."
+                          placeholder="Please share what draws you to this exploration, any specific interests, boundaries, or questions you may have..."
                           rows={4}
                         />
                       </div>
@@ -284,7 +284,7 @@ const Booking = () => {
 
                     {/* Agreements */}
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-slate-800">Required Agreements</h3>
+                      <h3 className="text-lg font-semibold text-slate-800">Consent & Understanding</h3>
                       
                       <div className="space-y-3">
                         <div className="flex items-start space-x-2">
@@ -313,7 +313,7 @@ const Booking = () => {
                             className="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                           />
                           <Label htmlFor="consent" className="text-sm leading-5">
-                            I understand this is a professional service and all activities are consensual with clear boundaries.
+                            I understand this is a journey of exploration and all activities are enthusiastically consensual with clear boundaries.
                           </Label>
                         </div>
                         
@@ -328,7 +328,7 @@ const Booking = () => {
                             className="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                           />
                           <Label htmlFor="discretion" className="text-sm leading-5">
-                            I agree to maintain discretion and confidentiality about our professional relationship.
+                            I agree to maintain discretion and confidentiality about our connection and explorations.
                           </Label>
                         </div>
                         
@@ -343,7 +343,7 @@ const Booking = () => {
                             className="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                           />
                           <Label htmlFor="safety" className="text-sm leading-5">
-                            I understand the importance of safety protocols and agree to follow all safety guidelines.
+                            I understand the importance of safety, communication, and agree to honor all safety guidelines and boundaries.
                           </Label>
                         </div>
                       </div>
@@ -361,7 +361,7 @@ const Booking = () => {
                           Sending...
                         </>
                       ) : (
-                        "Submit Booking Request"
+                        "Submit Expression of Interest"
                       )}
                     </Button>
                   </form>
@@ -381,15 +381,15 @@ const Booking = () => {
                 <CardContent className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-slate-800">Response Time</h4>
-                    <p className="text-sm text-slate-600">I will respond to your booking request within 24 hours.</p>
+                    <p className="text-sm text-slate-600">I will respond to your expression of interest within 24 hours.</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Consultation</h4>
-                    <p className="text-sm text-slate-600">First-time clients start with a consultation to discuss boundaries and expectations.</p>
+                    <h4 className="font-semibold text-slate-800">Initial Conversation</h4>
+                    <p className="text-sm text-slate-600">First-time explorers begin with a conversation to discuss interests, boundaries, and mutual expectations.</p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-800">Preparation</h4>
-                    <p className="text-sm text-slate-600">Detailed preparation instructions will be provided upon booking confirmation.</p>
+                    <p className="text-sm text-slate-600">Detailed guidance will be provided as we plan your exploration together.</p>
                   </div>
                 </CardContent>
               </Card>
@@ -404,15 +404,15 @@ const Booking = () => {
                 <CardContent className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-slate-800">Confidentiality</h4>
-                    <p className="text-sm text-slate-600">All personal information is kept strictly confidential.</p>
+                    <p className="text-sm text-slate-600">All personal information and communications are kept strictly confidential.</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Safety Protocols</h4>
-                    <p className="text-sm text-slate-600">Comprehensive safety measures are in place for all sessions.</p>
+                    <h4 className="font-semibold text-slate-800">Safety First</h4>
+                    <p className="text-sm text-slate-600">Comprehensive safety measures and clear communication are prioritized in all explorations.</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Professional Environment</h4>
-                    <p className="text-sm text-slate-600">Clean, private, and professionally maintained space.</p>
+                    <h4 className="font-semibold text-slate-800">Respectful Space</h4>
+                    <p className="text-sm text-slate-600">Clean, private, and respectfully maintained space for our connection.</p>
                   </div>
                 </CardContent>
               </Card>
@@ -421,13 +421,13 @@ const Booking = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Heart className="h-5 w-5 mr-2 text-purple-600" />
-                    Aftercare
+                    Support & Growth
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-slate-600">
-                    Comprehensive aftercare is provided with every session, including emotional support 
-                    and follow-up check-ins to ensure your well-being.
+                    Comprehensive support is provided with every exploration, including emotional care 
+                    and follow-up conversations to ensure your growth and well-being.
                   </p>
                 </CardContent>
               </Card>

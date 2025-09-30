@@ -17,13 +17,13 @@ const Index = () => {
     },
     {
       icon: Star,
-      title: "Professional Excellence",
-      description: "Years of experience in providing quality discipline services"
+      title: "Experienced Guidance",
+      description: "Years of experience in guiding transformative disciplinary journeys"
     },
     {
       icon: Clock,
-      title: "Flexible Scheduling",
-      description: "Sessions available to accommodate your busy lifestyle"
+      title: "Flexible Connection",
+      description: "Explorations available to accommodate your busy lifestyle"
     },
     {
       icon: Heart,
@@ -47,10 +47,10 @@ const Index = () => {
             Mya The Disciplinarian
           </h1>
           <p className="text-base md:text-lg lg:text-xl xl:text-2xl mb-4 md:mb-6 text-purple-100 animate-fade-in">
-            Professional discipline services delivered with discretion, respect, and expertise
+            Guiding disciplinary journeys with discretion, respect, and empowerment
           </p>
           <p className="text-sm md:text-base lg:text-lg mb-6 md:mb-8 text-purple-200 animate-fade-in">
-            Based in Bedfordshire, but available to travel and make arrangements to perform elsewhere
+            Based in Bedfordshire, but available to connect and make arrangements elsewhere
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto animate-fade-in">
             <Button 
@@ -58,14 +58,14 @@ const Index = () => {
               size="lg" 
               className="bg-white text-purple-900 hover:bg-purple-50 w-full focus:ring-2 focus:ring-purple-400 focus:ring-offset-2"
             >
-              <Link to="/booking">Book Session</Link>
+              <Link to="/booking">Connect With Me</Link>
             </Button>
             <Button 
               asChild 
               size="lg" 
               className="bg-purple-700 text-white hover:bg-purple-600 w-full focus:ring-2 focus:ring-purple-400 focus:ring-offset-2"
             >
-              <Link to="/services">Explore Services</Link>
+              <Link to="/services">Explore Journeys</Link>
             </Button>
             <Button 
               asChild 
@@ -84,17 +84,17 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center">
             <div className="order-2 lg:order-1">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-3 md:mb-4">
-                Welcome to Professional Discipline
+                Welcome to Disciplinary Exploration
               </h2>
               <p className="text-sm md:text-base lg:text-lg text-slate-600 mb-3 md:mb-4">
-                I am Mya, a professional disciplinarian dedicated to providing safe, consensual, and 
-                transformative experiences. With years of experience and a deep understanding of the 
-                psychological and physical aspects of discipline, I offer a unique service tailored 
-                to your individual needs.
+                I am Mya, a disciplinarian and mentor dedicated to guiding safe, consensual, and 
+                transformative journeys. With years of experience and a deep understanding of the 
+                psychological and physical aspects of discipline, I offer unique explorations tailored 
+                to your individual growth and empowerment.
               </p>
               <p className="text-sm md:text-base lg:text-lg text-slate-600 mb-4 md:mb-6">
-                Every session is conducted with the utmost respect for boundaries, clear communication, 
-                and an unwavering commitment to your safety and satisfaction.
+                Every exploration is conducted with the utmost respect for boundaries, clear communication, 
+                and an unwavering commitment to your safety and personal development.
               </p>
               <Button 
                 asChild 
@@ -130,8 +130,8 @@ const Index = () => {
       <section className="py-8 md:py-12 bg-slate-50">
         <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
           <div className="text-center mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-3 md:mb-4">Why Choose My Services</h2>
-            <p className="text-base md:text-lg lg:text-xl text-slate-600">Professional standards meet personal care</p>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-3 md:mb-4">What Guides Our Connection</h2>
+            <p className="text-base md:text-lg lg:text-xl text-slate-600">Empowerment, safety, and mutual respect</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {features.map((feature, index) => (
@@ -151,25 +151,23 @@ const Index = () => {
       <section className="py-8 md:py-12 bg-white">
         <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
           <div className="text-center mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-3 md:mb-4">Session Rates</h2>
-            <p className="text-base md:text-lg lg:text-xl text-slate-600">Clear, transparent pricing for all services</p>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-3 md:mb-4">Journey Details</h2>
+            <p className="text-base md:text-lg lg:text-xl text-slate-600">Common exploration formats and timeframes</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
             <Card className="hover:shadow-lg transition-shadow duration-300 border-purple-200">
               <CardContent className="p-4 md:p-6 text-center">
-                <h3 className="text-xl md:text-2xl font-bold text-purple-700 mb-3 md:mb-4">Newbie Sessions</h3>
-                <div className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">£300</div>
+                <h3 className="text-xl md:text-2xl font-bold text-purple-700 mb-3 md:mb-4">First-Time Exploration</h3>
                 <p className="text-slate-600 mb-3 md:mb-4">1.5 hours</p>
-                <p className="text-sm md:text-base text-slate-600">Perfect for first-time clients with extended consultation and gentle introduction</p>
+                <p className="text-sm md:text-base text-slate-600">Perfect for new explorers with extended conversation and gentle guidance</p>
               </CardContent>
             </Card>
             
             <Card className="hover:shadow-lg transition-shadow duration-300 border-purple-200">
               <CardContent className="p-4 md:p-6 text-center">
-                <h3 className="text-xl md:text-2xl font-bold text-purple-700 mb-3 md:mb-4">Regular Clients</h3>
-                <div className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">£250</div>
-                <p className="text-slate-600 mb-3 md:mb-4">per hour</p>
-                <p className="text-sm md:text-base text-slate-600">For returning clients familiar with the process and their preferences</p>
+                <h3 className="text-xl md:text-2xl font-bold text-purple-700 mb-3 md:mb-4">Continuing Journeys</h3>
+                <p className="text-slate-600 mb-3 md:mb-4">1 hour typical</p>
+                <p className="text-sm md:text-base text-slate-600">For those familiar with their path and seeking continued growth</p>
               </CardContent>
             </Card>
           </div>
@@ -179,7 +177,7 @@ const Index = () => {
               <CardContent className="p-4 md:p-6">
                 <Shield className="h-6 w-6 md:h-8 md:w-8 text-purple-600 mx-auto mb-2 md:mb-3" aria-hidden="true" />
                 <p className="text-sm md:text-base text-slate-700 font-medium">
-                  Bank statement name is discreet and does not reflect the service provided.
+                  All arrangements are handled with complete discretion and privacy.
                 </p>
               </CardContent>
             </Card>
@@ -192,8 +190,8 @@ const Index = () => {
         <div className="max-w-4xl mx-auto text-center px-3 sm:px-4 lg:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Ready to Begin Your Journey?</h2>
           <p className="text-base md:text-lg lg:text-xl mb-4 md:mb-6 text-purple-100">
-            Take the first step towards a professional and transformative experience. 
-            Book your session today and discover what makes my services unique.
+            Take the first step towards an empowering and transformative exploration. 
+            Connect with me today and discover the possibilities for your growth.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-md mx-auto">
             <Button 
@@ -201,7 +199,7 @@ const Index = () => {
               size="lg" 
               className="bg-white text-purple-600 hover:bg-purple-50 w-full focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-600"
             >
-              <Link to="/booking">Book Now</Link>
+              <Link to="/booking">Connect Now</Link>
             </Button>
             <Button 
               asChild 

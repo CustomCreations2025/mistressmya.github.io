@@ -6,53 +6,47 @@ import { Link } from "react-router-dom";
 import { Clock, Star, Shield } from "lucide-react";
 
 const Services = () => {
-  const services = [
+  const experiences = [
     {
-      title: "Newbie Session",
+      title: "First-Time Exploration",
       duration: "1.5 hours",
-      price: "£300",
-      description: "Perfect introduction for first-time clients. Extended session to ensure comfort and proper boundary setting.",
-      features: ["Extended consultation", "Gentle introduction", "Comprehensive aftercare", "Boundary establishment"],
-      category: "New Client"
+      description: "A gentle introduction for those new to disciplinary journeys. Extended time ensures comfort and proper boundary discussion.",
+      features: ["Extended conversation", "Gentle guidance", "Comprehensive support", "Boundary exploration"],
+      category: "New Explorer"
     },
     {
-      title: "Regular Session",
+      title: "Continuing Journey",
       duration: "1 hour",
-      price: "£250",
-      description: "Standard session for returning clients who are familiar with the process and their preferences.",
-      features: ["Personalized approach", "Various techniques", "Professional environment", "Post-session debrief"],
-      category: "Regular Client"
+      description: "For those who have begun their path and are familiar with their preferences and boundaries.",
+      features: ["Personalized approach", "Various explorations", "Supportive environment", "Reflection time"],
+      category: "Experienced"
     },
     {
-      title: "Extended Session",
+      title: "Deep Immersion",
       duration: "2 hours",
-      price: "£500",
-      description: "Extended session for those seeking a more immersive and comprehensive experience.",
-      features: ["Extended experience", "Multiple scenarios", "Advanced techniques", "Comprehensive aftercare"],
-      category: "Extended"
+      description: "An extended journey for those seeking a more comprehensive and transformative experience.",
+      features: ["Extended exploration", "Multiple scenarios", "Advanced guidance", "Comprehensive support"],
+      category: "Intensive"
     },
     {
-      title: "Lifestyle Coaching",
+      title: "Lifestyle Mentoring",
       duration: "60 minutes",
-      price: "£300",
-      description: "Ongoing guidance and coaching for those incorporating discipline into their lifestyle.",
-      features: ["Lifestyle integration", "Ongoing support", "Progress tracking", "Personalized guidance"],
-      category: "Coaching"
+      description: "Ongoing guidance and mentoring for those integrating discipline into their personal growth journey.",
+      features: ["Lifestyle integration", "Ongoing mentorship", "Growth tracking", "Personalized guidance"],
+      category: "Mentoring"
     },
     {
-      title: "Couples Session",
+      title: "Partnership Exploration",
       duration: "2 hours",
-      price: "£500",
-      description: "Professional guidance for couples exploring discipline together in a safe environment.",
-      features: ["Couple dynamics", "Communication training", "Boundary setting", "Joint aftercare"],
-      category: "Specialized"
+      description: "Guidance for couples exploring discipline together in a safe and supportive environment.",
+      features: ["Partnership dynamics", "Communication development", "Boundary exploration", "Shared support"],
+      category: "Partnership"
     },
     {
-      title: "Virtual Consultation",
+      title: "Virtual Connection",
       duration: "45 minutes",
-      price: "£150",
-      description: "Remote consultation via secure video call for initial discussions or ongoing support.",
-      features: ["Secure platform", "Flexible scheduling", "Global availability", "Follow-up support"],
+      description: "Remote connection via secure video call for initial conversations or ongoing guidance.",
+      features: ["Secure platform", "Flexible timing", "Global reach", "Follow-up support"],
       category: "Virtual"
     }
   ];
@@ -77,22 +71,22 @@ const Services = () => {
       {/* Hero Section */}
       <section className="py-12 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Professional Services</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Explorations & Offerings</h1>
           <p className="text-lg md:text-xl text-purple-100 mb-6">
-            Tailored discipline experiences designed to meet your unique needs with complete professionalism and discretion.
+            Tailored disciplinary journeys designed to support your growth, exploration, and empowerment with complete discretion.
           </p>
           <p className="text-base md:text-lg text-purple-200">
-            Based in Bedfordshire, but available to travel and make arrangements to perform elsewhere.
+            Based in Bedfordshire, but available to connect and make arrangements elsewhere.
           </p>
         </div>
       </section>
 
-      {/* My Services Section */}
+      {/* My Focus Section */}
       <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">My Services</h2>
-            <p className="text-lg md:text-xl text-slate-600 mb-6">Professional discipline services offered with discretion and expertise</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">My Focus</h2>
+            <p className="text-lg md:text-xl text-slate-600 mb-6">Areas of exploration and growth offered with discretion and expertise</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -107,38 +101,37 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Types of Experiences Section */}
       <section className="py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Available Sessions</h2>
-            <p className="text-lg md:text-xl text-slate-600">Choose the service that best fits your needs and experience level</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Types of Experiences</h2>
+            <p className="text-lg md:text-xl text-slate-600">Find the exploration that resonates with your journey and growth goals</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
+            {experiences.map((experience, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
                 <CardHeader className="bg-gradient-to-br from-purple-50 to-pink-50 pb-4">
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant="secondary" className="bg-purple-100 text-purple-700">
-                      {service.category}
+                      {experience.category}
                     </Badge>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-purple-700">{service.price}</div>
                       <div className="text-sm text-slate-500 flex items-center">
                         <Clock className="h-4 w-4 mr-1" />
-                        {service.duration}
+                        {experience.duration}
                       </div>
                     </div>
                   </div>
-                  <CardTitle className="text-xl text-slate-800">{service.title}</CardTitle>
+                  <CardTitle className="text-xl text-slate-800">{experience.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
-                  <p className="text-slate-600 mb-4">{service.description}</p>
+                  <p className="text-slate-600 mb-4">{experience.description}</p>
                   <div className="space-y-2 mb-6">
                     <h4 className="font-semibold text-slate-700">Includes:</h4>
                     <ul className="space-y-1">
-                      {service.features.map((feature, idx) => (
+                      {experience.features.map((feature, idx) => (
                         <li key={idx} className="text-sm text-slate-600 flex items-center">
                           <div className="h-1.5 w-1.5 bg-purple-400 rounded-full mr-2"></div>
                           {feature}
@@ -147,7 +140,7 @@ const Services = () => {
                     </ul>
                   </div>
                   <Button asChild className="w-full bg-gradient-to-r from-purple-600 to-pink-600">
-                    <Link to="/booking">Book This Service</Link>
+                    <Link to="/booking">Express Interest</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -156,40 +149,40 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Payment Information */}
+      {/* What I Value Section */}
       <section className="py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">Payment Information</h2>
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">What I Value</h2>
           </div>
           
           <Card className="bg-purple-50 border-purple-200">
             <CardContent className="p-6 text-center">
               <Shield className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-slate-800 mb-3">Discreet Billing</h3>
+              <h3 className="text-xl font-semibold text-slate-800 mb-3">Privacy & Discretion</h3>
               <p className="text-slate-600 text-lg">
-                Bank statement name is discreet and does not reflect the service provided.
+                All interactions are handled with complete discretion and confidentiality.
               </p>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* Service Guidelines */}
+      {/* Guidelines for Connection */}
       <section className="py-12 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Service Guidelines</h2>
-            <p className="text-lg md:text-xl text-slate-600">Important information about my services</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Guidelines for Connection</h2>
+            <p className="text-lg md:text-xl text-slate-600">Important principles that guide our explorations</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="text-center">
               <CardContent className="p-6">
                 <Shield className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-800 mb-2">Safety First</h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">Safety & Consent</h3>
                 <p className="text-slate-600">
-                  All sessions prioritize your safety and well-being with clear boundaries and safe words.
+                  All explorations prioritize safety, clear communication, and enthusiastic consent with established boundaries.
                 </p>
               </CardContent>
             </Card>
@@ -197,9 +190,9 @@ const Services = () => {
             <Card className="text-center">
               <CardContent className="p-6">
                 <Clock className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-800 mb-2">Punctuality</h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">Respect for Time</h3>
                 <p className="text-slate-600">
-                  Sessions begin promptly at the scheduled time. Please arrive 10 minutes early for preparation.
+                  Our connections honor scheduled time together. Please arrive with intention and preparation.
                 </p>
               </CardContent>
             </Card>
@@ -207,9 +200,9 @@ const Services = () => {
             <Card className="text-center">
               <CardContent className="p-6">
                 <Star className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-800 mb-2">Aftercare</h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">Growth & Support</h3>
                 <p className="text-slate-600">
-                  Comprehensive aftercare is provided with every session to ensure your well-being.
+                  Comprehensive support and reflection time is provided to ensure your growth and well-being.
                 </p>
               </CardContent>
             </Card>
@@ -220,13 +213,13 @@ const Services = () => {
       {/* Call to Action */}
       <section className="py-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Book Your Session?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Begin Your Journey?</h2>
           <p className="text-lg md:text-xl mb-6 text-purple-100">
-            Start with a consultation to discuss your needs and find the perfect service for you.
+            Start with a conversation to explore your interests and find the perfect path for your growth.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
             <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50 w-full">
-              <Link to="/booking">Book Session</Link>
+              <Link to="/booking">Connect With Me</Link>
             </Button>
             <Button asChild size="lg" className="bg-purple-700 text-white hover:bg-purple-600 w-full">
               <Link to="/contact">Ask Questions</Link>

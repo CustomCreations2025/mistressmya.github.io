@@ -42,6 +42,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
+    { name: "Drop-Off", href: "/personal-drop-off" },
+    { name: "Collection", href: "/collection" },
     { name: "About", href: "/about" },
     { name: "Gallery", href: "/gallery" },
     { name: "Blog", href: "/blog" },

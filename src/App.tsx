@@ -12,6 +12,8 @@ import Booking from "./pages/Booking";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
+import PersonalDropOff from "./pages/PersonalDropOff";
+import WornCollection from "./pages/WornCollection";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +33,8 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/personal-drop-off" element={<PersonalDropOff />} />
+          <Route path="/collection" element={<WornCollection />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

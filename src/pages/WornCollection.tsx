@@ -1,8 +1,7 @@
 import Layout from "@/components/Layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
 import { Package, Star, Shield, MessageCircle, Shirt, Heart } from "lucide-react";
+import RequestForm from "@/components/RequestForm";
 
 const WornCollection = () => {
   const categories = [
@@ -126,17 +125,21 @@ const WornCollection = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Interested in the Collection?</h2>
-          <p className="text-lg md:text-xl mb-8 text-purple-100">
-            Get in touch to enquire about availability, pricing, and custom requests. 
-            All enquiries handled with complete discretion.
-          </p>
-          <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50">
-            <Link to="/contact">Enquire About the Collection</Link>
-          </Button>
+      {/* Request Form */}
+      <section className="py-16 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Interested in the Collection?</h2>
+            <p className="text-lg text-purple-100">
+              Submit your enquiry below. All requests handled with complete discretion.
+            </p>
+          </div>
+          <RequestForm 
+            title="Collection Enquiry"
+            description="Please share details about what you're looking for from Mya's personal collection."
+            requestType="Worn Collection"
+            placeholder="Please describe what items you're interested in, any preferences for wear duration, or specific requests..."
+          />
         </div>
       </section>
     </Layout>

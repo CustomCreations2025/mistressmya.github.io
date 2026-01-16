@@ -21,12 +21,52 @@ const RequestForm = ({ title, description, requestType, placeholder }: RequestFo
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+
+  const validateForm = (): boolean => {
+    const errors: Record<string, string> = {};
+    
+    // Name validation
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+    } else if (formData.name.trim().length > 100) {
+      errors.name = "Name must be less than 100 characters";
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email.trim())) {
+      errors.email = "Please enter a valid email address";
+    } else if (formData.email.trim().length > 255) {
+      errors.email = "Email must be less than 255 characters";
+    }
+    
+    // Message validation
+    if (!formData.message.trim()) {
+      errors.message = "Message is required";
+    } else if (formData.message.trim().length > 5000) {
+      errors.message = "Message must be less than 5000 characters";
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear validation error when user starts typing
+    if (validationErrors[field]) {
+      setValidationErrors(prev => ({ ...prev, [field]: "" }));
+    }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    if (!validateForm()) {
+      e.preventDefault();
+      return;
+    }
     setIsSubmitting(true);
     setSubmitError("");
   };
@@ -70,8 +110,13 @@ const RequestForm = ({ title, description, requestType, placeholder }: RequestFo
               name="name"
               value={formData.name}
               onChange={(e) => handleInputChange("name", e.target.value)}
+              maxLength={100}
               required
+              aria-invalid={!!validationErrors.name}
             />
+            {validationErrors.name && (
+              <p className="text-sm text-red-600 mt-1">{validationErrors.name}</p>
+            )}
           </div>
 
           <div>
@@ -82,9 +127,14 @@ const RequestForm = ({ title, description, requestType, placeholder }: RequestFo
               type="email"
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
+              maxLength={255}
               required
+              aria-invalid={!!validationErrors.email}
             />
             <p className="text-sm text-slate-500 mt-1">I will use this email to respond to your request</p>
+            {validationErrors.email && (
+              <p className="text-sm text-red-600 mt-1">{validationErrors.email}</p>
+            )}
           </div>
 
           <div>
@@ -96,8 +146,14 @@ const RequestForm = ({ title, description, requestType, placeholder }: RequestFo
               onChange={(e) => handleInputChange("message", e.target.value)}
               placeholder={placeholder || "Please share any details about your request..."}
               rows={4}
+              maxLength={5000}
               required
+              aria-invalid={!!validationErrors.message}
             />
+            <p className="text-sm text-slate-500 mt-1">{formData.message.length}/5000 characters</p>
+            {validationErrors.message && (
+              <p className="text-sm text-red-600 mt-1">{validationErrors.message}</p>
+            )}
           </div>
 
           <Button 

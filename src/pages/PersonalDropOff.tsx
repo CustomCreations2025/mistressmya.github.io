@@ -1,8 +1,7 @@
 import Layout from "@/components/Layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Heart, Clock, MapPin } from "lucide-react";
+import RequestForm from "@/components/RequestForm";
 
 const PersonalDropOff = () => {
   const guidelines = [
@@ -103,16 +102,21 @@ const PersonalDropOff = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Interested in This Experience?</h2>
-          <p className="text-lg md:text-xl mb-8 text-purple-100">
-            Reach out to discuss availability and arrangements. All enquiries handled with complete discretion.
-          </p>
-          <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-purple-50">
-            <Link to="/contact">Request a Personal Drop-Off</Link>
-          </Button>
+      {/* Request Form */}
+      <section className="py-16 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Interested in This Experience?</h2>
+            <p className="text-lg text-purple-100">
+              Submit your enquiry below. All requests handled with complete discretion.
+            </p>
+          </div>
+          <RequestForm 
+            title="Personal Drop-Off Request"
+            description="Please share details about your interest in this experience."
+            requestType="Personal Drop-Off"
+            placeholder="Please share your preferred timing, location preferences, and any questions you may have..."
+          />
         </div>
       </section>
     </Layout>
